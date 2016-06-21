@@ -1,6 +1,7 @@
 JavaScript Async codes
 ============
-JavaScript Asynchronous is complex and much the same ( >.< )
+JavaScript Asynchronous is complex and much the same ( >.< ).
+
 You can learn JavaScript Asynchronous logic through executable simple codes in a browser.
 
 ## examples
@@ -17,7 +18,9 @@ XHR ->  XHR -> setTimeout
 
 ## Install and start
 npm install
+
 (start your localServer)
+
 http://localhost:8080/examples/async.html
 
 ## rebuild async/await.
