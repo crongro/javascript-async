@@ -27,8 +27,10 @@
 
       <section class="log"></section>
 
-      <div class="filepath">code : <span>example/src/callbackhell.js<span></div>
-        
+      <div class="filepath">code : 
+      <a href="https://github.com/nigayo/javascript-async/blob/master/src/callbackhell.js" target="_blank">callbackhell.js (github) 
+      </a></div>
+
      <script src="../src/common/util.js"></script>
      <script src="../src/callbackhell.js"></script>
      <script src="../src/promise.js"></script>
@@ -39,6 +41,7 @@
        (function() {
         $(".menu > ul").addEventListener("click", function(e) {
           var target = e.target;
+          if(target.nodeName !== "LI") return;
           var exname = target.dataset.name;
           setBGStyle('selectedTab', e.target);
 
@@ -46,7 +49,8 @@
           elTitle.innerHTML = exname;
           $(".log").innerHTML = "";
 
-          $(".filepath > span").innerHTML = "examples/src/"+exname+".js";
+          var giturl = "https://github.com/nigayo/javascript-async/blob/master/src/" + exname + ".js";
+          $(".filepath").innerHTML = "code : <a href=" + giturl + " target='_blank'>" + exname + ".js (github) </a>";
         });
 
         $(".main > .run").addEventListener("click", function() {
