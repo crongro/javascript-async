@@ -1,0 +1,18 @@
+{
+  "user": {
+      "id": 0,
+      "name": "nigayo",
+      "work": "PMC",
+      "email": "nigayoun@gmail.com",
+      "address": "83 Warner Street",
+      "city": "Boston"
+  },
+  "cloneUser": {
+      "id": 3,
+      "name": "michael",
+      "work": "MS",
+      "email": "nigayo@gmail.com",
+      "address": "ha-an 2dong",
+      "city": "Seoul"
+  }
+}

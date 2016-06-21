@@ -1,0 +1,16 @@
+{
+  "name": "javascript-async-codes",
+  "version": "1.0.0",
+  "description": "Working sample codes for understanding JavaScript asynchronous",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "asyncbuild": "babel src/asyncAwait.js --presets stage-3 --out-file src/asyncAwaitES5.js"
+  },
+  "author": "nigayo <nigayoun@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-preset-stage-3": "^6.5.0"
+  }
+}
