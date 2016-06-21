@@ -1,4 +1,4 @@
-var fnlist = {};
+var fnlist = fnlist || {};
 
 function simpleAjax(url, fnSuccess) {
   var req = new XMLHttpRequest();
