@@ -1,10 +1,18 @@
 var fnlist = fnlist || {};
 
-var pm = new Promise( function(resolve, reject){
-     window.setTimeout(function(){
-            resolve("ok!");
-     },500);
-});
+//This code is same as 'simpleFetch' function of promise.js
+function simpleFetch(url) {
+  return new Promise(function(resolve, reject){
+    var req = new XMLHttpRequest();
+    req.addEventListener("load", function() {
+      let htData = JSON.parse(req.responseText);
+      if(typeof htData !== "object") reject("wrong data");
+      else resolve(htData);
+    });
+    req.open("GET", url);
+    req.send();
+  });
+}
 
 fnlist.asyncAwait = async function () {
   try {
