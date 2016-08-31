@@ -1,6 +1,6 @@
 JavaScript Async codes
 ============
-JavaScript Asynchronous is very complex and much the same.
+JavaScript Asynchronous solutions are very complex and much the same.
 
 You can learn JavaScript Asynchronous logic through **executable simple codes in a browser**.
 
@@ -14,10 +14,9 @@ https://nigayo.github.io/javascript-async/examples/async.html
 3. Generator/yield
 4. Generator/yield + Promise
 5. Async/await  (with babel)
+6. Observable (with RxJS)
 
-tested in Chrome and Firefox.
-
-## Asynchronous flow
+## Simple asynchronous flow of examples
 
 XHR ->  XHR -> setTimeout
 
