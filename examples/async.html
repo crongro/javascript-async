@@ -17,6 +17,7 @@
           <li data-name="generator">generator</li>
           <li data-name="generatorAndPromise">generator+promise</li>
           <li data-name="asyncAwait">async/await</li>
+          <li data-name="observable">observable</li>
         </ul></nav>
         <h2 class="title">callbackhell</h2>
       </header>
@@ -31,12 +32,15 @@
       <a href="https://github.com/nigayo/javascript-async/blob/master/src/callbackhell.js" target="_blank">callbackhell.js (github) 
       </a></div>
 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/4.1.0/rx.all.min.js"></script>
+
      <script src="../src/common/util.js"></script>
      <script src="../src/callbackhell.js"></script>
      <script src="../src/promise.js"></script>
      <script src="../src/generator.js"></script>
      <script src="../src/generatorAndPromise.js"></script>
      <script src="../src/asyncAwaitES5.js"></script>
+     <script src="../src/observable.js"></script>
      <script>
        (function() {
         $(".menu > ul").addEventListener("click", function(e) {
