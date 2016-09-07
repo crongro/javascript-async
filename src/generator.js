@@ -1,6 +1,19 @@
 var fnlist = fnlist || {};
 var gen = null;
 
+function simpleFetch(url) {
+  return new Promise(function(resolve, reject){
+    var req = new XMLHttpRequest();
+    req.addEventListener("load", function() {
+      let htData = JSON.parse(req.responseText);
+      if(typeof htData !== "object") reject("wrong data");
+      else resolve(htData);
+    });
+    req.open("GET", url);
+    req.send();
+  });
+}
+
 function simpleAjaxWithGenerator(url) {
   var req = new XMLHttpRequest();
   req.addEventListener("load", function() {
@@ -17,11 +30,19 @@ function simpleSetTimeoutPromiseWithGenerator(nTime, aData) {
   },nTime)
 }
 
+function getPromiseData(oPromise) {
+    oPromise.then(function(data){
+      gen.next(data);
+    });
+}
+
 function *myGenerator() {
   try {
     var data = yield simpleAjaxWithGenerator("../data/first.json");
     var name = data.user.name;
-    var data2 = yield simpleAjaxWithGenerator("../data/img/" + name + ".json");
+
+    var oPromise = simpleFetch("../data/img/" + name + ".json");
+    var data2 = yield getPromiseData(oPromise);
 
     var aImage = data2.images;
     var data3 = yield simpleSetTimeoutPromiseWithGenerator(500, aImage);
@@ -36,5 +57,5 @@ function *myGenerator() {
 
 fnlist.generator = function() {
   gen = myGenerator();
-  gen.next();
+  var result = gen.next();
 }
