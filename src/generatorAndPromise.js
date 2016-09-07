@@ -1,6 +1,18 @@
 var fnlist = fnlist || {};
 var gen = null;
 
+function simpleFetch(url) {
+  return new Promise(function(resolve, reject){
+    var req = new XMLHttpRequest();
+    req.addEventListener("load", function() {
+      let htData = JSON.parse(req.responseText);
+      if(typeof htData !== "object") reject("wrong data");
+      else resolve(htData);
+    });
+    req.open("GET", url);
+    req.send();
+  });
+}
 
 //simpleFetch and simpleSetTimeoutPromise function are in a 'promise.js'.
 
