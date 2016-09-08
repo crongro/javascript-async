@@ -1,5 +1,4 @@
 var fnlist = fnlist || {};
-var gen = null;
 
 function simpleFetch(url) {
   return new Promise(function(resolve, reject){
@@ -22,7 +21,6 @@ function *myGeneratorWithPromise() {
     var url2 = "../data/img/" + data.user.name + ".json";
 
     var data2 = yield simpleFetch(url2);
-
     var aImage = data2.images;
 
     //parallel task using Promise.all function.
@@ -48,7 +46,7 @@ function runGenerator(g) {
     ret = it.next( val );
 
     if (!ret.done) {
-      if ("then" in ret.value) {
+      if (typeof ret.value === "object" && ("then" in ret.value)) {
         ret.value.then( iterate );
       }
       else {
