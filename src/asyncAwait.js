@@ -1,7 +1,7 @@
 var fnlist = fnlist || {};
 
 //This code is same as 'simpleFetch' function of promise.js
-function simpleFetch(url) {
+function simpleFetch2(url) {
   return new Promise(function(resolve, reject){
     var req = new XMLHttpRequest();
     req.addEventListener("load", function() {
@@ -14,12 +14,22 @@ function simpleFetch(url) {
   });
 }
 
+function simpleSetTimeoutPromise(nTime, msg) {
+  return new Promise(function(resolve, reject){
+    setTimeout(function(){
+      resolve(msg);
+      //reject("timeout error..");
+    },nTime)
+  });
+}
+
+
 fnlist.asyncAwait = async function () {
   try {
-    var data = await simpleFetch("../data/first.json");
+    var data = await simpleFetch2("../data/first.json");
     var url2 = "../data/img/" + data.user.name + ".json";
 
-    var data2 = await simpleFetch(url2);
+    var data2 = await simpleFetch2(url2);
 
     var aImage = data2.images;
 
@@ -34,6 +44,6 @@ fnlist.asyncAwait = async function () {
     data3[0].forEach((v) => logMsg(elLog,v));
 
   } catch (err) {
-    console.log("error during myGenerator : ", err);
+    console.log(">.< error during myGenerator : ", err);
   }
 }

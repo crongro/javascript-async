@@ -1,9 +1,9 @@
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { return step("next", value); }, function (err) { return step("throw", err); }); } } return step("next"); }); }; }
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 var fnlist = fnlist || {};
 
 //This code is same as 'simpleFetch' function of promise.js
-function simpleFetch(url) {
+function simpleFetch2(url) {
   return new Promise(function (resolve, reject) {
     var req = new XMLHttpRequest();
     req.addEventListener("load", function () {
@@ -15,12 +15,21 @@ function simpleFetch(url) {
   });
 }
 
+function simpleSetTimeoutPromise(nTime, msg) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      resolve(msg);
+      //reject("timeout error..");
+    }, nTime);
+  });
+}
+
 fnlist.asyncAwait = _asyncToGenerator(function* () {
   try {
-    var data = yield simpleFetch("../data/first.json");
+    var data = yield simpleFetch2("../data/first.json");
     var url2 = "../data/img/" + data.user.name + ".json";
 
-    var data2 = yield simpleFetch(url2);
+    var data2 = yield simpleFetch2(url2);
 
     var aImage = data2.images;
 
@@ -32,6 +41,6 @@ fnlist.asyncAwait = _asyncToGenerator(function* () {
       return logMsg(elLog, v);
     });
   } catch (err) {
-    console.log("error during myGenerator : ", err);
+    console.log(">.< error during myGenerator : ", err);
   }
 });
