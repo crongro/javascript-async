@@ -1,6 +1,6 @@
 var fnlist = fnlist || {};
 
-function simpleFetch(url) {
+function simpleFetchForPromise(url) {
   return new Promise(function(resolve, reject){
     var req = new XMLHttpRequest();
     req.addEventListener("load", function() {
@@ -23,11 +23,11 @@ function simpleSetTimeoutPromise(nTime, msg) {
 
 
 fnlist.promise = function() {
-  simpleFetch("../data/first.json")
+  simpleFetchForPromise("../data/first.json")
     .then(function(data) {
       var name = data.user.name;
       var imgUrl = "../data/img/" + name + ".json";
-      return simpleFetch(imgUrl);
+      return simpleFetchForPromise(imgUrl);
     })
     .then(function(data2) {
       return simpleSetTimeoutPromise(500,data2);
