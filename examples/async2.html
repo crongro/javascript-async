@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="callback hell >.<">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>async javascript</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+      <header>
+        <nav class="menu">
+        <ul>
+          <li data-name="callbackhell" class="selectedTab">callbackhell</li>
+          <li data-name="promise">promise</li>
+          <li data-name="generator">generator</li>
+          <li data-name="generatorAndPromise">generator+promise</li>
+          <li data-name="asyncAwait">async/await</li>
+          <li data-name="observable">observable</li>
+        </ul></nav>
+        <h2 class="title">callbackhell</h2>
+      </header>
+
+      <section class="main">
+        <button class="run">run!</button>
+      </section>
+
+      <section class="log"></section>
+
+      <div class="filepath">code : 
+      <a href="https://github.com/nigayo/javascript-async/blob/master/src/callbackhell.js" target="_blank">callbackhell.js (github) 
+      </a></div>
+
+     <script src="../src/common/util.js"></script>
+     <script src="../src/asyncAwait.js"></script>
+     <script>
+       (function() {
+        $(".menu > ul").addEventListener("click", function(e) {
+          var target = e.target;
+          if(target.nodeName !== "LI") return;
+          var exname = target.dataset.name;
+          setBGStyle('selectedTab', e.target);
+
+          var elTitle = $("h2.title");
+          elTitle.innerHTML = exname;
+          $(".log").innerHTML = "";
+
+          var giturl = "https://github.com/nigayo/javascript-async/blob/master/src/" + exname + ".js";
+          $(".filepath").innerHTML = "code : <a href=" + giturl + " target='_blank'>" + exname + ".js (github) </a>";
+        });
+
+        $(".main > .run").addEventListener("click", function() {
+          var title = $("h2.title").innerText;
+          fnlist[title]();
+        });
+      })();
+    </script>
+    </body>
+</html>

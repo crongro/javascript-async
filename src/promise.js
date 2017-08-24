@@ -42,3 +42,4 @@ fnlist.promise = function() {
     })
 };
 
+console.log("end");
